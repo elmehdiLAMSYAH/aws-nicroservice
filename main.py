@@ -5,18 +5,8 @@ from pydantic import BaseModel
 app = FastAPI()
 
 products = {
-    1: {
-        "mat": "QBCD7878 ",
-        "name": "tendeuse a barbe",
-        "price": "25.89"
-
-    },
-    2: {
-        "mat": "QBCD789",
-        "name": "souris logitech wireless",
-        "price": "17.99"
-
-    }
+    1: {"mat": "QBCD7878 ", "name": "tendeuse a barbe", "price": "25.89"},
+    2: {"mat": "QBCD789", "name": "souris logitech wireless", "price": "17.99"},
 }
 
 
