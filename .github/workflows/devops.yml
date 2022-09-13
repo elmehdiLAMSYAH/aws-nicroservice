@@ -38,10 +38,6 @@ jobs:
         run: make install
 
       # Runs a single command using the runners shell
-      - name: install dependencies
-        run: make install
-
-      # Runs a single command using the runners shell
       # - name: lint with pylint
       #  run: make lint
 
