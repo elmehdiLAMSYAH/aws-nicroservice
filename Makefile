@@ -4,7 +4,7 @@ install:
 format:
 		black *.py helpers/*.py
 lint:
-		pylint --disable=R,C main.py
+		pylint --disable=R,C  window.py   helpers/logic.py
 test:
 		python -m pytest -vv main-test.py
 deploy:

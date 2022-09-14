@@ -49,29 +49,29 @@ async def getproductByName(mat: Optional[str] = None):
 
 
 @app.post("/addProduct/{id}")
-async def add_product(id: int, product: Product):
-    if id in products:
+async def add_product(identification: int, product: Product):
+    if identification in products:
         return {"erreur": "product already exist"}
-    products[id] = product
-    return products[id]
+    products[identification] = product
+    return products[identification]
 
 
 @app.put("/updateProduct/{id}")
-async def updateProduct(id: int, product: UpdateProduct):
-    if id not in products:
+async def updateProduct(identification: int, product: UpdateProduct):
+    if identification not in products:
         return {"erreur": "product not exist"}
     if product.mat != "string":
-        products[id]["mat"] = product.mat
+        products[identification]["mat"] = product.mat
     if product.name != "string":
-        products[id]["name"] = product.name
+        products[identification]["name"] = product.name
     if product.price != 0:
-        products[id]["price"] = product.price
-    return products[id]
+        products[identification]["price"] = product.price
+    return products[identification]
 
 
 @app.delete("/deleteProduct/{id}")
-async def deleteProduct(id: int):
-    if id not in products:
+async def deleteProduct(identification: int):
+    if identification not in products:
         return {"error": "Product not exist"}
-    del products[id]
+    del products[identification]
     return {"succes": "Product deleted"}

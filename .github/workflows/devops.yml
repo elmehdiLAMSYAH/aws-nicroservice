@@ -29,17 +29,15 @@ jobs:
         with:
             python-version: 3.9
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+
 
       # Runs a single command using the runners shell
       - name: install dependencies
         run: make install
 
       # Runs a single command using the runners shell
-      # - name: lint with pylint
-      #  run: make lint
+      - name: lint with pylint
+        run: make lint
 
       # Runs a single command using the runners shell
       #- name: test with pytest
