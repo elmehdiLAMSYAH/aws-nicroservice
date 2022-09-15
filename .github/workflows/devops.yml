@@ -44,5 +44,5 @@ jobs:
         run: make test
 
       # Runs a single command using the runners shell
-      #- name: format code
-      #  run: make format
+      - name: format code
+        run: make format
