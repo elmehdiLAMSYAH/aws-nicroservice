@@ -40,8 +40,8 @@ jobs:
         run: make lint
 
       # Runs a single command using the runners shell
-      #- name: test with pytest
-      #  run: make test
+      - name: test with pytest
+        run: make test
 
       # Runs a single command using the runners shell
       #- name: format code
