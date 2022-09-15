@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from typing import Optional
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -17,9 +16,9 @@ class Product(BaseModel):
 
 
 class UpdateProduct(BaseModel):
-    mat: Optional[str]
-    name: Optional[str]
-    price: Optional[float]
+    mat: str
+    name: str
+    price: float
 
 
 @app.get("/")
@@ -33,18 +32,18 @@ async def say_hello(name: str):
 
 
 @app.get("/getproduct/{id}")
-def get_product(id: int):
-    if id not in products:
+def get_product(ident: int):
+    if ident not in products:
         return {"erreur": "product not exist"}
-    print(products[int(id)])
-    return products[int(id)]
+    print(products[int(ident)])
+    return products[int(ident)]
 
 
 @app.get("/getproductByName")
-async def getproductByName(mat: Optional[str] = None):
-    for id in products:
-        if products[id]["mat"] == mat:
-            return products[id]
+async def getproductByName(mat: str = None):
+    for ident in products:
+        if products[ident]["mat"] == mat:
+            return products[ident]
     return {"data": "product not found in dict"}
 
 
