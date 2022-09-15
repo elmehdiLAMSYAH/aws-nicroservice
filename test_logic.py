@@ -1,4 +1,4 @@
-from logic import wikiData
+from helpers.logic import wikiData
 
 
 def test_wikiData():
