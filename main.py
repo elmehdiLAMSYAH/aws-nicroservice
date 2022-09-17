@@ -1,5 +1,7 @@
 from fastapi import FastAPI
+import uvicorn
 from pydantic import BaseModel
+from helpers.logic import wikiData, wikiSearch
 
 app = FastAPI()
 
@@ -74,3 +76,17 @@ async def deleteProduct(identification: int):
         return {"error": "Product not exist"}
     del products[identification]
     return {"succes": "Product deleted"}
+
+
+@app.get("/search/{name}")
+async def searchInWiki(name: str):
+    if name is not None:
+        return {f"result : {wikiSearch(name=name)}"}
+    return {f"result by default for no cotent : {wikiSearch()}"}
+
+
+@app.get("/wikisentence/{sentence}/{lenght}")
+async def searchDataInWiki(sentence: str, lenght=int):
+    if sentence is not None:
+        return {f"result : {wikiData(name=sentence, length=lenght)}"}
+    return {f"result by default for no cotent : {wikiData()}"}
