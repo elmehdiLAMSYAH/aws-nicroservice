@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
 from helpers.logic import wikiData, wikiSearch
-
+from textblob import TextBlob
 app = FastAPI()
 
 products = {
