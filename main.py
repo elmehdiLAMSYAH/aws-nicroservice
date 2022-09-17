@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-import uvicorn
 from pydantic import BaseModel
+
 from helpers.logic import wikiData, wikiSearch
 
 app = FastAPI()
