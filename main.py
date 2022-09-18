@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from helpers.logic import wikiData, wikiSearch, sentencwblob
-from textblob import TextBlob
+
 
 app = FastAPI()
 
@@ -92,7 +92,7 @@ async def searchInWikitags(name: str):
     """ searching name with token tags """
     if name is not None:
         return {f"result with tags : {sentencwblob(wikiData(name=name))}"}
-    return {f"no result for None data "}
+    return {"no result for None data "}
 
 
 @app.get("/wikisentence/{sentence}/{lenght}")
