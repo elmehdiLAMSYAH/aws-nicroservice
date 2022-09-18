@@ -1,7 +1,9 @@
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-from helpers.logic import wikiData, wikiSearch
+from helpers.logic import wikiData, wikiSearch, sentencwblob
 from textblob import TextBlob
+
 app = FastAPI()
 
 products = {
@@ -79,8 +81,17 @@ async def deleteProduct(identification: int):
 
 @app.get("/search/{name}")
 async def searchInWiki(name: str):
+    """ searching name  """
     if name is not None:
         return {f"result : {wikiSearch(name=name)}"}
+    return {f"result by default for no cotent : {wikiSearch()}"}
+
+
+@app.get("/searchtags/{name}")
+async def searchInWiki(name: str):
+    """ searching name with token tags """
+    if name is not None:
+        return {f"result with tags : {sentencwblob(name=name)}"}
     return {f"result by default for no cotent : {wikiSearch()}"}
 
 
@@ -89,3 +100,7 @@ async def searchDataInWiki(sentence: str, lenght=int):
     if sentence is not None:
         return {f"result : {wikiData(name=sentence, length=lenght)}"}
     return {f"result by default for no cotent : {wikiData()}"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, port=8080, host="localhost")
