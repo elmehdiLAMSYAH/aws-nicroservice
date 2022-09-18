@@ -88,11 +88,11 @@ async def searchInWiki(name: str):
 
 
 @app.get("/searchtags/{name}")
-async def searchInWiki(name: str):
+async def searchInWikitags(name: str):
     """ searching name with token tags """
     if name is not None:
-        return {f"result with tags : {sentencwblob(name=name)}"}
-    return {f"result by default for no cotent : {wikiSearch()}"}
+        return {f"result with tags : {sentencwblob(wikiData(name=name))}"}
+    return {f"no result for None data "}
 
 
 @app.get("/wikisentence/{sentence}/{lenght}")
